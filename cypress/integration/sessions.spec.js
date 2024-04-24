@@ -25,7 +25,7 @@ describe("Sessions page", () => {
 
     });
 
-    it("should filter sessions and only display Wednesdar sessions when Wednesday button is clicked", () => {
+    it("should filter sessions and only display Wednesday sessions when Wednesday button is clicked", () => {
       cy.get("@WednesdayBtn").click()
 
       cy.get("[data-cy=day]").should("have.length", 21)
@@ -35,7 +35,7 @@ describe("Sessions page", () => {
 
     })
 
-    it("should filter sessions and only display Wednesdar sessions when Thursday button is clicked", () => {
+    it("should filter sessions and only display Thursday sessions when Thursday button is clicked", () => {
       cy.get("@ThursdayBtn").click()
 
       cy.get("[data-cy=day]").contains("Thursday").should("be.visible")
@@ -44,7 +44,7 @@ describe("Sessions page", () => {
 
     })
 
-    it("should filter sessions and only display Wednesdar sessions when Friday button is clicked", () => {
+    it("should filter sessions and only display Friday sessions when Friday button is clicked", () => {
       cy.get("@FridayBtn").click()
 
       cy.get("[data-cy=day]").contains("Friday").should("be.visible")
