@@ -126,7 +126,7 @@ describe("Sessions page", () => {
 
     it("should filter sessions and only display Friday sessions when Friday button is clicked", () => {
       
-      cy.intercept("POST", "http://localhost:4000/graphql").as("getSessionInfo")
+      cy.intercept("POST", "http://localhost:4000/graphql", { fixture: "sessions.json"}).as("getSessionInfo")
       cy.get("@FridayBtn").click()
       cy.wait("@getSessionInfo")
 
