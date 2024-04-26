@@ -6,3 +6,5 @@ describe("Navigation", () => {
     cy.url().should("include", "/sessions");
   });
 });
+
+// add coment to test
