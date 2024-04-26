@@ -136,6 +136,18 @@ describe("Sessions page", () => {
 
     })
 
+    it("should filter sessions and only display all sessions when All Sessions button is clicked", () => {
+      // Spy response
+      cy.intercept("POST", "http://localhost:4000/graphql").as("getSessionInfo");
+      cy.get("@AllSessionsBtn").click();
+      cy.wait("@getSessionInfo");
+  
+      // Assertions
+      cy.get("[data-cy=day]").contains("Wednesday").should("be.visible");
+      cy.get("[data-cy=day]").contains("Thursday").should("be.visible");
+      cy.get("[data-cy=day]").contains("Friday").should("be.visible");
+    });
+
 
   });
   
