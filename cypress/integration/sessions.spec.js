@@ -4,15 +4,14 @@ describe("Sessions page", () => {
   
   // Run before each test in the describe block
   beforeEach(() => {
-    cy.visit("/conference");
-    cy.get("h1").contains("View Sessions").click();
+    cy.clickViewSessions()
     cy.url().should("include", "/sessions");
 
     // Define aliases here
-    cy.get("[data-cy=AllSessions]").as("AllSessionsBtn")
-    cy.get("[data-cy=Wednesday]").as("WednesdayBtn")
-    cy.get("[data-cy=Thursday]").as("ThursdayBtn")
-    cy.get("[data-cy=Friday]").as("FridayBtn")
+    cy.dataCy("AllSessions").as("AllSessionsBtn")
+    cy.dataCy("Wednesday").as("WednesdayBtn")
+    cy.dataCy("Thursday").as("ThursdayBtn")
+    cy.dataCy("Friday").as("FridayBtn")
   })
 
     it("should navigate to conference sessions page and view day filter buttons", () => {
@@ -30,10 +29,10 @@ describe("Sessions page", () => {
       // cy.get("@WednesdayBtn").click();
       // cy.wait("@getSessionInfo");
 
-      cy.get("[data-cy=day]").should("have.length", 21)
-      cy.get("[data-cy=day]").contains("Wednesday").should("be.visible")
-      cy.get("[data-cy=day]").contains("Thursday").should("not.exist")
-      cy.get("[data-cy=day]").contains("Friday").should("not.exist")
+      cy.dataCy("day").should("have.length", 21)
+      cy.dataCy("day").contains("Wednesday").should("be.visible")
+      cy.dataCy("day").contains("Thursday").should("not.exist")
+      cy.dataCy("day").contains("Friday").should("not.exist")
 
     })
 
@@ -43,9 +42,9 @@ describe("Sessions page", () => {
       cy.get("@ThursdayBtn").click()
       cy.wait("@getSessionInfo")
 
-      cy.get("[data-cy=day]").contains("Thursday").should("be.visible")
-      cy.get("[data-cy=day]").contains("Wednesday").should("not.exist")
-      cy.get("[data-cy=day]").contains("Friday").should("not.exist")
+      cy.dataCy("day").contains("Thursday").should("be.visible")
+      cy.dataCy("day").contains("Wednesday").should("not.exist")
+      cy.dataCy("day").contains("Friday").should("not.exist")
 
     })
 
@@ -55,9 +54,9 @@ describe("Sessions page", () => {
       cy.get("@FridayBtn").click()
       cy.wait("@getSessionInfo")
 
-      cy.get("[data-cy=day]").contains("Friday").should("be.visible")
-      cy.get("[data-cy=day]").contains("Thursday").should("not.exist")
-      cy.get("[data-cy=day]").contains("Wednesday").should("not.exist")
+      cy.dataCy("day").contains("Friday").should("be.visible")
+      cy.dataCy("day").contains("Thursday").should("not.exist")
+      cy.dataCy("day").contains("Wednesday").should("not.exist")
 
     })
   });
