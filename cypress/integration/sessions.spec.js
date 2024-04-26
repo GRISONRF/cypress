@@ -135,5 +135,7 @@ describe("Sessions page", () => {
       cy.dataCy("day").contains("Wednesday").should("not.exist")
 
     })
+
+
   });
   
